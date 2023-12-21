@@ -1,5 +1,4 @@
 const express = require("express");
-const bodyParser = require('body-parser'); // body-parser 추가
 const next = require('next');
 const mysql = require('mysql2');
 
@@ -19,8 +18,8 @@ const connection = mysql.createConnection({
 
 app.prepare().then(() => {
   const server = express();
-  server.use(bodyParser.json());
-  server.use(bodyParser.urlencoded({ extended: true }));
+  server.use(express.json());
+  server.use(express.urlencoded({ extended: true }));
 
   // 회원가입 API 엔드포인트
   server.post("/signup", (req, res) => {
